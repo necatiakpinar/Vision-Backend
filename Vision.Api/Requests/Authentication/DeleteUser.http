@@ -1,0 +1,9 @@
+@host = http://localhost:5118
+
+DELETE {{host}}/auth/DeleteUser
+Content-Type: application/json
+
+{
+  "userId": "1cb52476-3334-4cd1-8d50-01e6c11db8ec"
+}
+

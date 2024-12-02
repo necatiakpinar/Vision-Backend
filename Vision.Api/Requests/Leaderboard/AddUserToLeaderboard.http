@@ -1,0 +1,10 @@
+@host = http://localhost:5118
+
+POST {{host}}/leaderboard/addOrUpdateUser
+Content-Type: application/json
+
+{
+  "userId": "dfefe1ca-482a-4d61-a81e-598d13ab869b",
+  "score": -1
+}
+

@@ -1,0 +1,39 @@
+@page
+@model Vision.Api.Pages.Image.IndexModel
+@{
+    ViewData["Title"] = "Upload Images";
+}
+
+<h2>Upload Image</h2>
+
+<form method="post" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <label for="file">Select an image to upload:</label>
+        <input type="file" name="UploadFile" class="form-control" />
+        <span asp-validation-for="UploadFile" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Upload</button>
+</form>
+
+
+
+<h2>Uploaded Images</h2>
+
+@if (Model.Files != null && Model.Files.Count > 0)
+{
+    <ul>
+        @foreach (var file in Model.Files)
+        {
+            <li>
+                <a href="/image/GetImage?id=@file.Id.ToString()">@file.Filename</a>
+                <br/>
+                <img src="/image/GetImage?id=@file.Id" alt="@file.Filename" style="max-width:200px;" />
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No images uploaded yet.</p>
+}
